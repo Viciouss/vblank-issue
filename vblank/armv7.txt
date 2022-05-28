@@ -1,0 +1,21 @@
+[constants]
+toolchain = '/opt/dev/os/buildroot/buildroot-2021.11/output/host/bin/arm-buildroot-linux-uclibcgnueabihf-'
+
+[properties]
+sys_root = '/opt/dev/os/buildroot/buildroot-2021.11/output/host/arm-buildroot-linux-uclibcgnueabihf/sysroot'
+pkg_config_libdir = '/opt/dev/os/buildroot/buildroot-2021.11/output/staging/lib/pkgconfig'
+
+[binaries]
+c = toolchain + 'gcc'
+cpp = toolchain + 'g++'
+strip = toolchain + 'strip'
+c_ld = 'bfd'
+pkgconfig = '/usr/bin/pkg-config'
+
+[host_machine]
+system = 'linux'
+cpu_family = 'arm'
+cpu = 'armv7'
+endian = 'little'
+
+c_args = ['-mfloat-abi=hard']

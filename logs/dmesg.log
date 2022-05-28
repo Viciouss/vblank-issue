@@ -1,0 +1,724 @@
+[    0.000000] Booting Linux on physical CPU 0xa00
+[    0.000000] Linux version 5.18.0-rc6-00005-g9a77f8660959-dirty (martin@adroid) (arm-linux-gnueabihf-gcc (Linaro GCC 7.4-2019.02) 7.4.1 20181213 [linaro-7.4-2019.02 revision 56ec6f6b99cc167ff0c2f8e1a2eed33b1edc85d4], GNU ld (Linaro_Binutils-2019.02) 2.28.2.20170706) #10 SMP PREEMPT Sat May 21 00:40:40 CEST 2022
+[    0.000000] CPU: ARMv7 Processor [413fc090] revision 0 (ARMv7), cr=10c5387d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] OF: fdt: Machine model: Samsung Galaxy Note 10.1 (GT-N8010/N8013) based on Exynos4412
+[    0.000000] Memory policy: Data cache writealloc
+[    0.000000] cma: Reserved 96 MiB at 0xb9c00000
+[    0.000000] Samsung CPU ID: 0xe4412211
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000040000000-0x000000006effffff]
+[    0.000000]   HighMem  [mem 0x000000006f000000-0x00000000bfbfffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000040000000-0x00000000bfbfffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000040000000-0x00000000bfbfffff]
+[    0.000000] Running under secure firmware.
+[    0.000000] percpu: Embedded 17 pages/cpu s37108 r8192 d24332 u69632
+[    0.000000] pcpu-alloc: s37108 r8192 d24332 u69632 alloc=17*4096
+[    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3 
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 521760
+[    0.000000] Kernel command line: root=/dev/mmcblk2p9 rw init=/linuxrc earlyprintk console=ttySAC2 console=tty0 androidboot.selinux=permissive androidboot.hardware=smdk4x12 console=ttySAC2,115200 loglevel=4 sec_debug.level=0 sec_watchdog.sec_pet=5 androidboot.debug_level=0x4f4c sec_log=0x200000@0x46000000 sec_tima_log=0x200000@0x46202000 sec_avc_log=0x40000@0x46404000 s3cfb.bootloaderfb=0x5ec00000 lcdtype=1 consoleblank=0 androidboot.mode=charger lpj=3981312 vmalloc=256m oops=panic pmic_info=1 cordon=0 connie=GT-N8000_OPEN_EUR_0 androidboot.emmc_checksum=3 androidboot.odin_download=1 androidboot.bootloader=N8000XXSDQA7 androidboot.selinux=enforcing androidboot.warranty_bit=0 androidboot.sec_atd.tty=/dev/ttySAC2 androidboot.serialno=47902098818570f3 snd_soc_core.pmdown_time=1000
+[    0.000000] Unknown kernel command line parameters "earlyprintk sec_log=0x200000@0x46000000 sec_tima_log=0x200000@0x46202000 sec_avc_log=0x40000@0x46404000 lcdtype=1 pmic_info=1 cordon=0 connie=GT-N8000_OPEN_EUR_0", will be passed to user space.
+[    0.000000] Dentry cache hash table entries: 131072 (order: 7, 524288 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] Memory: 1950468K/2093056K available (11264K kernel code, 1484K rwdata, 4268K rodata, 1024K init, 6525K bss, 44284K reserved, 98304K cma-reserved, 1223680K highmem)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+[    0.000000] trace event string verifier disabled
+[    0.000000] Running RCU self tests
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU lockdep checking is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=8 to nr_cpu_ids=4.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 10 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=4
+[    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+[    0.000000] L2C: platform modifies aux control register: 0x02070000 -> 0x0a470000
+[    0.000000] L2C: DT/platform modifies aux control register: 0x02070000 -> 0x3a470000
+[    0.000000] L2C-310 enabling early BRESP for Cortex-A9
+[    0.000000] L2C-310 ID prefetch enabled, offset 8 lines
+[    0.000000] L2C-310 dynamic clock gating enabled, standby mode enabled
+[    0.000000] L2C-310 cache controller enabled, 16 ways, 1024 kB
+[    0.000000] L2C-310: CACHE_ID 0x4100c4c8, AUX_CTRL 0x7e470000
+[    0.000000] random: get_random_bytes called from start_kernel+0x528/0x6c4 with crng_init=0
+[    0.000000] Exynos4x12 clocks: sclk_apll = 400000000, sclk_mpll = 800000000
+[    0.000000] 	sclk_epll = 96000000, sclk_vpll = 108000000, arm_clk = 800000000
+[    0.000000] Switching to timer-based delay loop, resolution 41ns
+[    0.000000] clocksource: mct-frc: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
+[    0.000000] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+[    0.000782] Console: colour dummy device 80x30
+[    0.000924] printk: console [tty0] enabled
+[    0.000941] Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
+[    0.000953] ... MAX_LOCKDEP_SUBCLASSES:  8
+[    0.000965] ... MAX_LOCK_DEPTH:          48
+[    0.000977] ... MAX_LOCKDEP_KEYS:        8192
+[    0.000989] ... CLASSHASH_SIZE:          4096
+[    0.001001] ... MAX_LOCKDEP_ENTRIES:     32768
+[    0.001012] ... MAX_LOCKDEP_CHAINS:      65536
+[    0.001024] ... CHAINHASH_SIZE:          32768
+[    0.001035]  memory used by lock dependency info: 4061 kB
+[    0.001047]  memory used for stack traces: 2112 kB
+[    0.001058]  per task-struct memory footprint: 1536 bytes
+[    0.001188] Calibrating delay loop (skipped) preset value.. 796.26 BogoMIPS (lpj=3981312)
+[    0.001219] pid_max: default: 32768 minimum: 301
+[    0.001922] Mount-cache hash table entries: 2048 (order: 1, 8192 bytes, linear)
+[    0.001950] Mountpoint-cache hash table entries: 2048 (order: 1, 8192 bytes, linear)
+[    0.005528] CPU: Testing write buffer coherency: ok
+[    0.005733] CPU0: Spectre v2: using BPIALL workaround
+[    0.007185] CPU0: thread -1, cpu 0, socket 10, mpidr 80000a00
+[    0.012075] cblist_init_generic: Setting adjustable number of callback queues.
+[    0.012181] cblist_init_generic: Setting shift to 2 and lim to 1.
+[    0.012601] Running RCU-tasks wait API self tests
+[    0.014132] Setting up static identity map for 0x40100000 - 0x40100060
+[    0.015555] rcu: Hierarchical SRCU implementation.
+[    0.021218] smp: Bringing up secondary CPUs ...
+[    0.025012] CPU1: thread -1, cpu 1, socket 10, mpidr 80000a01
+[    0.025032] CPU1: Spectre v2: using BPIALL workaround
+[    0.029269] CPU2: thread -1, cpu 2, socket 10, mpidr 80000a02
+[    0.029288] CPU2: Spectre v2: using BPIALL workaround
+[    0.033036] CPU3: thread -1, cpu 3, socket 10, mpidr 80000a03
+[    0.033055] CPU3: Spectre v2: using BPIALL workaround
+[    0.033783] smp: Brought up 1 node, 4 CPUs
+[    0.033807] SMP: Total of 4 processors activated (3185.04 BogoMIPS).
+[    0.033829] CPU: All CPU(s) started in SVC mode.
+[    0.037848] devtmpfs: initialized
+[    0.172380] VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 4
+[    0.174225] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.174295] futex hash table entries: 1024 (order: 4, 65536 bytes, linear)
+[    0.178854] pinctrl core: initialized pinctrl subsystem
+[    0.186633] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.194420] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.204182] thermal_sys: Registered thermal governor 'step_wise'
+[    0.206423] cpuidle: using governor menu
+[    0.208468] hw-breakpoint: found 5 (+1 reserved) breakpoint and 1 watchpoint registers.
+[    0.208518] hw-breakpoint: maximum watchpoint size is 4 bytes.
+[    0.212520] printk: console [ramoops-1] enabled
+[    0.212575] pstore: Registered ramoops as persistent store backend
+[    0.212596] ramoops: using 0x100000@0x78d00000, ecc: 0
+[    0.240249] Callback from call_rcu_tasks() invoked.
+[    0.264506] /soc/power-domain@10023c80 has as child subdomain: /soc/power-domain@10023c20.
+[    0.308631] genirq: irq_chip COMBINER did not update eff. affinity mask of irq 83
+[    0.398250] gpio_stub_drv gpiochip0: (gpa0): added GPIO chardev (254:0)
+[    0.398284] gpio_stub_drv gpiochip0: registered GPIOs 0 to 7 on gpa0
+[    0.399384] gpio_stub_drv gpiochip1: (gpa1): added GPIO chardev (254:1)
+[    0.399411] gpio_stub_drv gpiochip1: registered GPIOs 8 to 13 on gpa1
+[    0.400415] gpio_stub_drv gpiochip2: (gpb): added GPIO chardev (254:2)
+[    0.400440] gpio_stub_drv gpiochip2: registered GPIOs 14 to 21 on gpb
+[    0.401479] gpio_stub_drv gpiochip3: (gpc0): added GPIO chardev (254:3)
+[    0.401505] gpio_stub_drv gpiochip3: registered GPIOs 22 to 26 on gpc0
+[    0.402493] gpio_stub_drv gpiochip4: (gpc1): added GPIO chardev (254:4)
+[    0.402519] gpio_stub_drv gpiochip4: registered GPIOs 27 to 31 on gpc1
+[    0.403550] gpio_stub_drv gpiochip5: (gpd0): added GPIO chardev (254:5)
+[    0.403576] gpio_stub_drv gpiochip5: registered GPIOs 32 to 35 on gpd0
+[    0.404588] gpio_stub_drv gpiochip6: (gpd1): added GPIO chardev (254:6)
+[    0.404614] gpio_stub_drv gpiochip6: registered GPIOs 36 to 39 on gpd1
+[    0.405647] gpio_stub_drv gpiochip7: (gpf0): added GPIO chardev (254:7)
+[    0.405672] gpio_stub_drv gpiochip7: registered GPIOs 40 to 47 on gpf0
+[    0.406687] gpio_stub_drv gpiochip8: (gpf1): added GPIO chardev (254:8)
+[    0.406713] gpio_stub_drv gpiochip8: registered GPIOs 48 to 55 on gpf1
+[    0.407765] gpio_stub_drv gpiochip9: (gpf2): added GPIO chardev (254:9)
+[    0.407792] gpio_stub_drv gpiochip9: registered GPIOs 56 to 63 on gpf2
+[    0.408780] gpio_stub_drv gpiochip10: (gpf3): added GPIO chardev (254:10)
+[    0.408806] gpio_stub_drv gpiochip10: registered GPIOs 64 to 69 on gpf3
+[    0.409859] gpio_stub_drv gpiochip11: (gpj0): added GPIO chardev (254:11)
+[    0.409886] gpio_stub_drv gpiochip11: registered GPIOs 70 to 77 on gpj0
+[    0.410948] gpio_stub_drv gpiochip12: (gpj1): added GPIO chardev (254:12)
+[    0.410974] gpio_stub_drv gpiochip12: registered GPIOs 78 to 82 on gpj1
+[    0.439841] gpio_stub_drv gpiochip13: (gpk0): added GPIO chardev (254:13)
+[    0.439871] gpio_stub_drv gpiochip13: registered GPIOs 83 to 89 on gpk0
+[    0.440995] gpio_stub_drv gpiochip14: (gpk1): added GPIO chardev (254:14)
+[    0.441021] gpio_stub_drv gpiochip14: registered GPIOs 90 to 96 on gpk1
+[    0.442016] gpio_stub_drv gpiochip15: (gpk2): added GPIO chardev (254:15)
+[    0.442042] gpio_stub_drv gpiochip15: registered GPIOs 97 to 103 on gpk2
+[    0.443103] gpio_stub_drv gpiochip16: (gpk3): added GPIO chardev (254:16)
+[    0.443129] gpio_stub_drv gpiochip16: registered GPIOs 104 to 110 on gpk3
+[    0.444126] gpio_stub_drv gpiochip17: (gpl0): added GPIO chardev (254:17)
+[    0.444152] gpio_stub_drv gpiochip17: registered GPIOs 111 to 117 on gpl0
+[    0.445165] gpio_stub_drv gpiochip18: (gpl1): added GPIO chardev (254:18)
+[    0.445192] gpio_stub_drv gpiochip18: registered GPIOs 118 to 119 on gpl1
+[    0.446223] gpio_stub_drv gpiochip19: (gpl2): added GPIO chardev (254:19)
+[    0.446249] gpio_stub_drv gpiochip19: registered GPIOs 120 to 127 on gpl2
+[    0.447280] gpio_stub_drv gpiochip20: (gpm0): added GPIO chardev (254:20)
+[    0.447306] gpio_stub_drv gpiochip20: registered GPIOs 128 to 135 on gpm0
+[    0.448322] gpio_stub_drv gpiochip21: (gpm1): added GPIO chardev (254:21)
+[    0.448348] gpio_stub_drv gpiochip21: registered GPIOs 136 to 142 on gpm1
+[    0.449381] gpio_stub_drv gpiochip22: (gpm2): added GPIO chardev (254:22)
+[    0.449407] gpio_stub_drv gpiochip22: registered GPIOs 143 to 147 on gpm2
+[    0.450427] gpio_stub_drv gpiochip23: (gpm3): added GPIO chardev (254:23)
+[    0.450453] gpio_stub_drv gpiochip23: registered GPIOs 148 to 155 on gpm3
+[    0.451518] gpio_stub_drv gpiochip24: (gpm4): added GPIO chardev (254:24)
+[    0.451544] gpio_stub_drv gpiochip24: registered GPIOs 156 to 163 on gpm4
+[    0.452536] gpio_stub_drv gpiochip25: (gpy0): added GPIO chardev (254:25)
+[    0.452563] gpio_stub_drv gpiochip25: registered GPIOs 164 to 169 on gpy0
+[    0.453597] gpio_stub_drv gpiochip26: (gpy1): added GPIO chardev (254:26)
+[    0.453624] gpio_stub_drv gpiochip26: registered GPIOs 170 to 173 on gpy1
+[    0.454613] gpio_stub_drv gpiochip27: (gpy2): added GPIO chardev (254:27)
+[    0.454640] gpio_stub_drv gpiochip27: registered GPIOs 174 to 179 on gpy2
+[    0.455670] gpio_stub_drv gpiochip28: (gpy3): added GPIO chardev (254:28)
+[    0.455696] gpio_stub_drv gpiochip28: registered GPIOs 180 to 187 on gpy3
+[    0.456685] gpio_stub_drv gpiochip29: (gpy4): added GPIO chardev (254:29)
+[    0.456711] gpio_stub_drv gpiochip29: registered GPIOs 188 to 195 on gpy4
+[    0.457744] gpio_stub_drv gpiochip30: (gpy5): added GPIO chardev (254:30)
+[    0.457770] gpio_stub_drv gpiochip30: registered GPIOs 196 to 203 on gpy5
+[    0.458759] gpio_stub_drv gpiochip31: (gpy6): added GPIO chardev (254:31)
+[    0.458785] gpio_stub_drv gpiochip31: registered GPIOs 204 to 211 on gpy6
+[    0.459855] gpio_stub_drv gpiochip32: (gpx0): added GPIO chardev (254:32)
+[    0.459881] gpio_stub_drv gpiochip32: registered GPIOs 212 to 219 on gpx0
+[    0.460950] gpio_stub_drv gpiochip33: (gpx1): added GPIO chardev (254:33)
+[    0.460975] gpio_stub_drv gpiochip33: registered GPIOs 220 to 227 on gpx1
+[    0.462011] gpio_stub_drv gpiochip34: (gpx2): added GPIO chardev (254:34)
+[    0.462037] gpio_stub_drv gpiochip34: registered GPIOs 228 to 235 on gpx2
+[    0.463082] gpio_stub_drv gpiochip35: (gpx3): added GPIO chardev (254:35)
+[    0.463108] gpio_stub_drv gpiochip35: registered GPIOs 236 to 243 on gpx3
+[    0.477200] gpio_stub_drv gpiochip36: (gpz): added GPIO chardev (254:36)
+[    0.477229] gpio_stub_drv gpiochip36: registered GPIOs 244 to 250 on gpz
+[    0.485005] gpio_stub_drv gpiochip37: (gpv0): added GPIO chardev (254:37)
+[    0.485034] gpio_stub_drv gpiochip37: registered GPIOs 251 to 258 on gpv0
+[    0.486107] gpio_stub_drv gpiochip38: (gpv1): added GPIO chardev (254:38)
+[    0.486134] gpio_stub_drv gpiochip38: registered GPIOs 259 to 266 on gpv1
+[    0.487133] gpio_stub_drv gpiochip39: (gpv2): added GPIO chardev (254:39)
+[    0.487159] gpio_stub_drv gpiochip39: registered GPIOs 267 to 274 on gpv2
+[    0.488212] gpio_stub_drv gpiochip40: (gpv3): added GPIO chardev (254:40)
+[    0.488238] gpio_stub_drv gpiochip40: registered GPIOs 275 to 282 on gpv3
+[    0.489229] gpio_stub_drv gpiochip41: (gpv4): added GPIO chardev (254:41)
+[    0.489255] gpio_stub_drv gpiochip41: registered GPIOs 283 to 284 on gpv4
+[    0.667005] platform panel: Fixing up cyclic dependency with 11c00000.fimd
+[    0.739379] reg-fixed-voltage voltage-regulator-1: GPIO lookup for consumer (null)
+[    0.739407] reg-fixed-voltage voltage-regulator-1: using device tree for GPIO lookup
+[    0.739502] of_get_named_gpiod_flags: parsed 'gpios' property of node '/voltage-regulator-1[0]' - status (0)
+[    0.739569] gpio_stub_drv gpiochip24: Persistence not supported for GPIO 5
+[    0.741397] reg-fixed-voltage voltage-regulator-2: GPIO lookup for consumer (null)
+[    0.741422] reg-fixed-voltage voltage-regulator-2: using device tree for GPIO lookup
+[    0.741502] of_get_named_gpiod_flags: parsed 'gpios' property of node '/voltage-regulator-2[0]' - status (0)
+[    0.741563] gpio_stub_drv gpiochip2: Persistence not supported for GPIO 5
+[    0.743176] reg-fixed-voltage voltage-regulator-3: GPIO lookup for consumer (null)
+[    0.743202] reg-fixed-voltage voltage-regulator-3: using device tree for GPIO lookup
+[    0.743279] of_get_named_gpiod_flags: parsed 'gpios' property of node '/voltage-regulator-3[0]' - status (0)
+[    0.743341] gpio_stub_drv gpiochip2: Persistence not supported for GPIO 7
+[    0.781538] reg-fixed-voltage voltage-regulator-4: GPIO lookup for consumer (null)
+[    0.781564] reg-fixed-voltage voltage-regulator-4: using device tree for GPIO lookup
+[    0.781672] of_get_named_gpiod_flags: parsed 'gpios' property of node '/voltage-regulator-4[0]' - status (0)
+[    0.781734] gpio_stub_drv gpiochip3: Persistence not supported for GPIO 1
+[    0.783338] reg-fixed-voltage voltage-regulator-5: GPIO lookup for consumer (null)
+[    0.783363] reg-fixed-voltage voltage-regulator-5: using device tree for GPIO lookup
+[    0.783445] of_get_named_gpiod_flags: parsed 'gpios' property of node '/voltage-regulator-5[0]' - status (0)
+[    0.783507] gpio_stub_drv gpiochip20: Persistence not supported for GPIO 0
+[    0.784981] reg-fixed-voltage voltage-regulator-6: GPIO lookup for consumer (null)
+[    0.785005] reg-fixed-voltage voltage-regulator-6: using device tree for GPIO lookup
+[    0.785052] of_get_named_gpiod_flags: can't parse 'gpios' property of node '/voltage-regulator-6[0]'
+[    0.785122] of_get_named_gpiod_flags: can't parse 'gpio' property of node '/voltage-regulator-6[0]'
+[    0.785180] reg-fixed-voltage voltage-regulator-6: using lookup tables for GPIO lookup
+[    0.785313] reg-fixed-voltage voltage-regulator-6: No GPIO consumer (null) found
+[    0.790277] iommu: Default domain type: Translated 
+[    0.790299] iommu: DMA domain TLB invalidation policy: strict mode 
+[    0.793087] SCSI subsystem initialized
+[    0.793341] libata version 3.00 loaded.
+[    0.794473] usbcore: registered new interface driver usbfs
+[    0.794769] usbcore: registered new interface driver hub
+[    0.794977] usbcore: registered new device driver usb
+[    0.796364] i2c-gpio i2c-gpio-1: GPIO lookup for consumer sda
+[    0.796389] i2c-gpio i2c-gpio-1: using device tree for GPIO lookup
+[    0.796478] of_get_named_gpiod_flags: parsed 'sda-gpios' property of node '/i2c-gpio-1[0]' - status (0)
+[    0.796539] gpio_stub_drv gpiochip27: Persistence not supported for GPIO 4
+[    0.796578] i2c-gpio i2c-gpio-1: GPIO lookup for consumer scl
+[    0.796599] i2c-gpio i2c-gpio-1: using device tree for GPIO lookup
+[    0.796675] of_get_named_gpiod_flags: parsed 'scl-gpios' property of node '/i2c-gpio-1[0]' - status (0)
+[    0.796729] gpio_stub_drv gpiochip27: Persistence not supported for GPIO 5
+[    0.801249] i2c-gpio i2c-gpio-1: using lines 178 (SDA) and 179 (SCL)
+[    0.801628] i2c-gpio i2c-gpio-2: GPIO lookup for consumer sda
+[    0.801652] i2c-gpio i2c-gpio-2: using device tree for GPIO lookup
+[    0.801735] of_get_named_gpiod_flags: parsed 'sda-gpios' property of node '/i2c-gpio-2[0]' - status (0)
+[    0.801792] gpio_stub_drv gpiochip25: Persistence not supported for GPIO 2
+[    0.801829] i2c-gpio i2c-gpio-2: GPIO lookup for consumer scl
+[    0.801850] i2c-gpio i2c-gpio-2: using device tree for GPIO lookup
+[    0.801925] of_get_named_gpiod_flags: parsed 'scl-gpios' property of node '/i2c-gpio-2[0]' - status (0)
+[    0.801979] gpio_stub_drv gpiochip25: Persistence not supported for GPIO 3
+[    0.805939] i2c-gpio i2c-gpio-2: using lines 166 (SDA) and 167 (SCL)
+[    0.806304] i2c-gpio i2c-gpio-3: GPIO lookup for consumer sda
+[    0.806328] i2c-gpio i2c-gpio-3: using device tree for GPIO lookup
+[    0.806408] of_get_named_gpiod_flags: parsed 'sda-gpios' property of node '/i2c-gpio-3[0]' - status (0)
+[    0.806464] gpio_stub_drv gpiochip24: Persistence not supported for GPIO 1
+[    0.806500] i2c-gpio i2c-gpio-3: GPIO lookup for consumer scl
+[    0.806521] i2c-gpio i2c-gpio-3: using device tree for GPIO lookup
+[    0.806596] of_get_named_gpiod_flags: parsed 'scl-gpios' property of node '/i2c-gpio-3[0]' - status (0)
+[    0.806649] gpio_stub_drv gpiochip24: Persistence not supported for GPIO 0
+[    0.811161] of_get_named_gpiod_flags: can't parse 'irq-gpio' property of node '/i2c-gpio-3/adc@41[0]'
+[    0.813176] stmpe-i2c 11-0041: stmpe811 detected, chip id: 0x811
+[    0.844529] i2c-gpio i2c-gpio-3: using lines 157 (SDA) and 156 (SCL)
+[    0.844900] i2c-gpio i2c-gpio-4: GPIO lookup for consumer sda
+[    0.844924] i2c-gpio i2c-gpio-4: using device tree for GPIO lookup
+[    0.845009] of_get_named_gpiod_flags: parsed 'sda-gpios' property of node '/i2c-gpio-4[0]' - status (0)
+[    0.845066] gpio_stub_drv gpiochip22: Persistence not supported for GPIO 0
+[    0.845104] i2c-gpio i2c-gpio-4: GPIO lookup for consumer scl
+[    0.845124] i2c-gpio i2c-gpio-4: using device tree for GPIO lookup
+[    0.845199] of_get_named_gpiod_flags: parsed 'scl-gpios' property of node '/i2c-gpio-4[0]' - status (0)
+[    0.845253] gpio_stub_drv gpiochip22: Persistence not supported for GPIO 1
+[    0.846508] i2c-gpio i2c-gpio-4: using lines 143 (SDA) and 144 (SCL)
+[    0.847690] s3c-i2c 13890000.i2c: slave address 0x10
+[    0.847722] s3c-i2c 13890000.i2c: bus frequency set to 390 KHz
+[    0.852404] s3c-i2c 13890000.i2c: i2c-3: S3C I2C adapter
+[    0.855221] s3c-i2c 138a0000.i2c: slave address 0x10
+[    0.855252] s3c-i2c 138a0000.i2c: bus frequency set to 390 KHz
+[    0.860543] s3c-i2c 138a0000.i2c: i2c-4: S3C I2C adapter
+[    0.863213] s3c-i2c 138d0000.i2c: slave address 0x10
+[    0.863244] s3c-i2c 138d0000.i2c: bus frequency set to 390 KHz
+[    0.872816] s3c-i2c 138d0000.i2c: i2c-7: S3C I2C adapter
+[    0.874617] pps_core: LinuxPPS API ver. 1 registered
+[    0.874638] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.874713] PTP clock support registered
+[    0.876967] Advanced Linux Sound Architecture Driver Initialized.
+[    0.880750] nfc: nfc_init: NFC Core ver 0.1
+[    0.881070] NET: Registered PF_NFC protocol family
+[    0.883798] clocksource: Switched to clocksource mct-frc
+[    1.348556] NET: Registered PF_INET protocol family
+[    1.349322] IP idents hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    1.352771] tcp_listen_portaddr_hash hash table entries: 512 (order: 2, 22528 bytes, linear)
+[    1.353379] TCP established hash table entries: 8192 (order: 3, 32768 bytes, linear)
+[    1.353787] TCP bind hash table entries: 8192 (order: 6, 327680 bytes, linear)
+[    1.354943] TCP: Hash tables configured (established 8192 bind 8192)
+[    1.355480] UDP hash table entries: 512 (order: 3, 49152 bytes, linear)
+[    1.355697] UDP-Lite hash table entries: 512 (order: 3, 49152 bytes, linear)
+[    1.356450] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    1.359002] RPC: Registered named UNIX socket transport module.
+[    1.359053] RPC: Registered udp transport module.
+[    1.359073] RPC: Registered tcp transport module.
+[    1.359092] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    1.362101] Trying to unpack rootfs image as initramfs...
+[    1.363213] rootfs image is not initramfs (Input was encoded with settings that are not supported by this XZ decoder); looks like an initrd
+[    1.363227] hw perfevents: enabled with armv7_cortex_a9 PMU driver, 7 counters available
+[    1.364325] Freeing initrd memory: 4K
+[    1.371573] Initialise system trusted keyrings
+[    1.372528] workingset: timestamp_bits=30 max_order=19 bucket_order=0
+[    1.419072] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    1.422574] NFS: Registering the id_resolver key type
+[    1.422720] Key type id_resolver registered
+[    1.422770] Key type id_legacy registered
+[    1.423321] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    1.423553] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    1.423856] romfs: ROMFS MTD (C) 2007 Red Hat, Inc.
+[    1.425192] Key type asymmetric registered
+[    1.425306] Asymmetric key parser 'x509' registered
+[    1.426453] bounce: pool size: 64 pages
+[    1.427136] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 246)
+[    1.427240] io scheduler mq-deadline registered
+[    1.427264] io scheduler kyber registered
+[    1.437512] samsung-usb2-phy 125b0000.exynos-usbphy: supply vbus not found, using dummy regulator
+[    1.447493] pwm-backlight backlight: GPIO lookup for consumer enable
+[    1.447522] pwm-backlight backlight: using device tree for GPIO lookup
+[    1.447617] of_get_named_gpiod_flags: parsed 'enable-gpios' property of node '/backlight[0]' - status (0)
+[    1.447678] gpio_stub_drv gpiochip20: Persistence not supported for GPIO 1
+[    1.447699] gpio-129 (enable): no flags found for enable
+[    1.447799] pwm-backlight backlight: supply power not found, using dummy regulator
+[    1.475845] dma-pl330 12680000.dma-controller: Loaded driver for PL330 DMAC-141330
+[    1.475876] dma-pl330 12680000.dma-controller: 	DBUFF-32x4bytes Num_Chans-8 Num_Peri-32 Num_Events-32
+[    1.490991] dma-pl330 12690000.dma-controller: Loaded driver for PL330 DMAC-141330
+[    1.491019] dma-pl330 12690000.dma-controller: 	DBUFF-32x4bytes Num_Chans-8 Num_Peri-32 Num_Events-32
+[    1.496256] dma-pl330 12850000.dma-controller: Loaded driver for PL330 DMAC-141330
+[    1.496282] dma-pl330 12850000.dma-controller: 	DBUFF-64x8bytes Num_Chans-8 Num_Peri-1 Num_Events-32
+[    1.497972] exynos-chipid 10000000.chipid: Exynos: CPU[EXYNOS4412] PRO_ID[0xe4412000] REV[0x11] Detected
+[    1.811815] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+[    1.824975] 13800000.serial: ttySAC0 at MMIO 0x13800000 (irq = 67, base_baud = 0) is a S3C6400/10
+[    1.826369] serial serial0: tty port ttySAC0 registered
+[    1.828779] 13820000.serial: ttySAC2 at MMIO 0x13820000 (irq = 68, base_baud = 0) is a S3C6400/10
+[    1.829818] printk: console [ttySAC2] enabled
+[    1.838392] exynos4-fb 11c00000.fimd: Adding to iommu group 0
+[    1.858112] panel-simple panel: GPIO lookup for consumer enable
+[    1.858141] panel-simple panel: using device tree for GPIO lookup
+[    1.858236] of_get_named_gpiod_flags: parsed 'enable-gpios' property of node '/panel[0]' - status (0)
+[    1.858298] gpio_stub_drv gpiochip20: Persistence not supported for GPIO 5
+[    1.914309] brd: module loaded
+[    1.955470] loop: module loaded
+[    2.000143] random: fast init done
+[    2.011630] of_get_named_gpiod_flags: can't parse 'maxim,ena-gpios' property of node '/soc/i2c@138d0000/pmic@9/voltage-regulators/LDO20[0]'
+[    2.011795] of_get_named_gpiod_flags: can't parse 'maxim,ena-gpio' property of node '/soc/i2c@138d0000/pmic@9/voltage-regulators/LDO20[0]'
+[    2.014841] of_get_named_gpiod_flags: parsed 'maxim,ena-gpios' property of node '/soc/i2c@138d0000/pmic@9/voltage-regulators/LDO21[0]' - status (0)
+[    2.014995] gpio_stub_drv gpiochip27: Persistence not supported for GPIO 0
+[    2.017339] of_get_named_gpiod_flags: can't parse 'maxim,ena-gpios' property of node '/soc/i2c@138d0000/pmic@9/voltage-regulators/LDO22[0]'
+[    2.017501] of_get_named_gpiod_flags: can't parse 'maxim,ena-gpio' property of node '/soc/i2c@138d0000/pmic@9/voltage-regulators/LDO22[0]'
+[    2.022855] CAM_A2.8V: Bringing 2200000uV into 2800000-2800000uV
+[    2.052600] of_get_named_gpiod_flags: can't parse 'maxim,ena-gpios' property of node '/soc/i2c@138d0000/pmic@9/voltage-regulators/BUCK8[0]'
+[    2.052765] of_get_named_gpiod_flags: can't parse 'maxim,ena-gpio' property of node '/soc/i2c@138d0000/pmic@9/voltage-regulators/BUCK8[0]'
+[    2.055435] of_get_named_gpiod_flags: can't parse 'maxim,ena-gpios' property of node '/soc/i2c@138d0000/pmic@9/voltage-regulators/BUCK9[0]'
+[    2.055599] of_get_named_gpiod_flags: can't parse 'maxim,ena-gpio' property of node '/soc/i2c@138d0000/pmic@9/voltage-regulators/BUCK9[0]'
+[    2.068866] mdio_bus fixed-0: GPIO lookup for consumer reset
+[    2.068897] mdio_bus fixed-0: using lookup tables for GPIO lookup
+[    2.068925] mdio_bus fixed-0: No GPIO consumer reset found
+[    2.071399] usbcore: registered new interface driver r8152
+[    2.071703] usbcore: registered new interface driver asix
+[    2.071872] usbcore: registered new interface driver ax88179_178a
+[    2.072057] usbcore: registered new interface driver cdc_ether
+[    2.072286] usbcore: registered new interface driver smsc75xx
+[    2.072515] usbcore: registered new interface driver smsc95xx
+[    2.072672] usbcore: registered new interface driver net1080
+[    2.072828] usbcore: registered new interface driver cdc_subset
+[    2.073005] usbcore: registered new interface driver zaurus
+[    2.073242] usbcore: registered new interface driver cdc_ncm
+[    2.077483] dwc2 12480000.hsotg: supply vusb_d not found, using dummy regulator
+[    2.081367] dwc2 12480000.hsotg: dwc2_check_params: Invalid parameter besl=1
+[    2.081397] dwc2 12480000.hsotg: dwc2_check_params: Invalid parameter g_np_tx_fifo_size=1024
+[    2.081686] dwc2 12480000.hsotg: EPs: 16, dedicated fifos, 7808 entries in SPRAM
+[    2.089244] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    2.089340] ehci-exynos: EHCI Exynos driver
+[    2.090260] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    2.090341] ohci-exynos: OHCI Exynos driver
+[    2.093289] usbcore: registered new interface driver uas
+[    2.093528] usbcore: registered new interface driver usb-storage
+[    2.096513] using random self ethernet address
+[    2.096570] using random host ethernet address
+[    2.099139] usb0: HOST MAC b2:41:b8:4c:f3:45
+[    2.099192] usb0: MAC 9e:ee:3a:e8:ea:52
+[    2.099772] using random self ethernet address
+[    2.099801] using random host ethernet address
+[    2.100315] g_ether gadget: Ethernet Gadget, version: Memorial Day 2008
+[    2.100339] g_ether gadget: g_ether ready
+[    2.101085] dwc2 12480000.hsotg: bound driver g_ether
+[    2.244978] max77686-rtc max77686-rtc: registered as rtc0
+[    2.278328] max77686-rtc max77686-rtc: setting system clock to 2012-05-16T14:55:56 UTC (1337180156)
+[    2.281817] s3c-rtc 10070000.rtc: rtc disabled, re-enabling
+[    2.283440] s3c-rtc 10070000.rtc: registered as rtc1
+[    2.285253] i2c_dev: i2c /dev entries driver
+[    2.396329] dwc2 12480000.hsotg: new device is high-speed
+[    2.415582] exynos-tmu 100c0000.tmu: Regulator node (vtmu) not found
+[    2.422344] s3c2410-wdt 10060000.watchdog: watchdog inactive, reset disabled, irq disabled
+[    2.425023] device-mapper: ioctl: 4.46.0-ioctl (2022-02-22) initialised: dm-devel@redhat.com
+[    2.456715] pwrseq_simple sdhci3-pwrseq: GPIO lookup for consumer reset
+[    2.456735] pwrseq_simple sdhci3-pwrseq: using device tree for GPIO lookup
+[    2.456794] of_get_named_gpiod_flags: parsed 'reset-gpios' property of node '/sdhci3-pwrseq[0]' - status (0)
+[    2.456832] gpio_stub_drv gpiochip23: Persistence not supported for GPIO 5
+[    2.457804] sdhci: Secure Digital Host Controller Interface driver
+[    2.457816] sdhci: Copyright(c) Pierre Ossman
+[    2.458486] Synopsys Designware Multimedia Card Interface Driver
+[    2.459609] of_get_named_gpiod_flags: parsed 'cd-gpios' property of node '/soc/sdhci@12530000[0]' - status (0)
+[    2.459665] s3c-sdhci 12540000.sdhci: clock source 2: mmc_busclk.2 (40000000 Hz)
+[    2.459774] s3c-sdhci 12530000.sdhci: clock source 2: mmc_busclk.2 (50000000 Hz)
+[    2.459820] s3c-sdhci 12540000.sdhci: GPIO lookup for consumer wp
+[    2.459835] s3c-sdhci 12540000.sdhci: using device tree for GPIO lookup
+[    2.459879] s3c-sdhci 12530000.sdhci: GPIO lookup for consumer cd
+[    2.459875] of_get_named_gpiod_flags: can't parse 'wp-gpios' property of node '/soc/sdhci@12540000[0]'
+[    2.459894] s3c-sdhci 12530000.sdhci: using device tree for GPIO lookup
+[    2.459934] of_get_named_gpiod_flags: can't parse 'wp-gpio' property of node '/soc/sdhci@12540000[0]'
+[    2.459949] of_get_named_gpiod_flags: parsed 'cd-gpios' property of node '/soc/sdhci@12530000[0]' - status (0)
+[    2.459988] s3c-sdhci 12540000.sdhci: using lookup tables for GPIO lookup
+[    2.460000] gpio_stub_drv gpiochip35: Persistence not supported for GPIO 4
+[    2.460025] s3c-sdhci 12530000.sdhci: Got CD GPIO
+[    2.460025] s3c-sdhci 12540000.sdhci: No GPIO consumer wp found
+[    2.460041] s3c-sdhci 12530000.sdhci: GPIO lookup for consumer wp
+[    2.460053] s3c-sdhci 12530000.sdhci: using device tree for GPIO lookup
+[    2.460082] of_get_named_gpiod_flags: can't parse 'wp-gpios' property of node '/soc/sdhci@12530000[0]'
+[    2.460138] of_get_named_gpiod_flags: can't parse 'wp-gpio' property of node '/soc/sdhci@12530000[0]'
+[    2.460156] s3c-sdhci 12540000.sdhci: allocated mmc-pwrseq
+[    2.460191] s3c-sdhci 12530000.sdhci: using lookup tables for GPIO lookup
+[    2.460206] s3c-sdhci 12530000.sdhci: No GPIO consumer wp found
+[    2.460587] dwmmc_exynos 12550000.mmc: IDMAC supports 32-bit address mode.
+[    2.462769] dwmmc_exynos 12550000.mmc: Using internal DMA controller.
+[    2.462794] dwmmc_exynos 12550000.mmc: Version ID is 240a
+[    2.463084] dwmmc_exynos 12550000.mmc: DW MMC controller at irq 121,32 bit host data width,128 deep fifo
+[    2.463655] dwmmc_exynos 12550000.mmc: GPIO lookup for consumer wp
+[    2.463671] dwmmc_exynos 12550000.mmc: using device tree for GPIO lookup
+[    2.463797] of_get_named_gpiod_flags: can't parse 'wp-gpios' property of node '/soc/mmc@12550000[0]'
+[    2.463856] of_get_named_gpiod_flags: can't parse 'wp-gpio' property of node '/soc/mmc@12550000[0]'
+[    2.463906] dwmmc_exynos 12550000.mmc: using lookup tables for GPIO lookup
+[    2.463922] dwmmc_exynos 12550000.mmc: No GPIO consumer wp found
+[    2.464021] mmc_host mmc2: card is non-removable.
+[    2.464684] s5p-secss 10830000.sss: s5p-sss driver registered
+[    2.467429] usbcore: registered new interface driver usbhid
+[    2.467448] usbhid: USB HID core driver
+[    2.478134] mmc_host mmc2: Bus speed (slot 0) = 50000000Hz (slot req 400000Hz, actual 396825HZ div = 63)
+[    2.493246] mmc0: SDHCI controller on samsung-hsmmc [12540000.sdhci] using ADMA
+[    2.494593] mmc1: SDHCI controller on samsung-hsmmc [12530000.sdhci] using ADMA
+[    2.504013] exynos-ppmu: new PPMU device registered 106a0000.ppmu (ppmu-event3-dmc0)
+[    2.504809] exynos-ppmu: new PPMU device registered 106b0000.ppmu (ppmu-event3-dmc1)
+[    2.505539] exynos-ppmu: new PPMU device registered 112a0000.ppmu (ppmu-event3-rightbus)
+[    2.506305] exynos-ppmu: new PPMU device registered 116a0000.ppmu (ppmu-event3-leftbus)
+[    2.510013] exynos-adc 126c0000.adc: error -ENXIO: IRQ index 1 not found
+[    2.517777] stmpe-adc stmpe-adc: DMA mask not set
+[    2.527410] ak8975 9-000c: GPIO lookup for consumer (null)
+[    2.527428] ak8975 9-000c: using device tree for GPIO lookup
+[    2.527456] of_get_named_gpiod_flags: can't parse 'gpios' property of node '/i2c-gpio-1/magnetometer@c[0]'
+[    2.527507] of_get_named_gpiod_flags: can't parse 'gpio' property of node '/i2c-gpio-1/magnetometer@c[0]'
+[    2.527549] ak8975 9-000c: using lookup tables for GPIO lookup
+[    2.527564] ak8975 9-000c: No GPIO consumer (null) found
+[    2.527576] ak8975 9-000c: GPIO lookup for consumer reset
+[    2.527587] ak8975 9-000c: using device tree for GPIO lookup
+[    2.527612] of_get_named_gpiod_flags: can't parse 'reset-gpios' property of node '/i2c-gpio-1/magnetometer@c[0]'
+[    2.527659] of_get_named_gpiod_flags: can't parse 'reset-gpio' property of node '/i2c-gpio-1/magnetometer@c[0]'
+[    2.527701] ak8975 9-000c: using lookup tables for GPIO lookup
+[    2.527714] ak8975 9-000c: No GPIO consumer reset found
+[    2.527752] ak8975 9-000c: mounting matrix not found: using identity...
+[    2.527878] ak8975 9-000c: supply vdd not found, using dummy regulator
+[    2.527917] dwc2 12480000.hsotg: new device is high-speed
+[    2.528403] ak8975 9-000c: supply vid not found, using dummy regulator
+[    2.543565] samsung-i2s 3830000.i2s-sec: DMA channels sourced from device 3830000.i2s
+[    2.550996] p4note-audio sound: GPIO lookup for consumer lineout-sel
+[    2.551072] p4note-audio sound: using device tree for GPIO lookup
+[    2.551131] of_get_named_gpiod_flags: parsed 'lineout-sel-gpios' property of node '/sound[0]' - status (0)
+[    2.551170] gpio_stub_drv gpiochip12: Persistence not supported for GPIO 2
+[    2.551659] p4note-audio sound: Failed to register card: -517
+[    2.559744] NET: Registered PF_INET6 protocol family
+[    2.562340] mmc_host mmc2: Bus speed (slot 0) = 50000000Hz (slot req 52000000Hz, actual 50000000HZ div = 0)
+[    2.564414] Segment Routing with IPv6
+[    2.564472] In-situ OAM (IOAM) with IPv6
+[    2.564585] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    2.564770] mmc2: new DDR MMC card at address 0001
+[    2.567650] NET: Registered PF_PACKET protocol family
+[    2.567760] NET: Registered PF_KEY protocol family
+[    2.568079] Key type dns_resolver registered
+[    2.568657] mmcblk2: mmc2:0001 SEM16G 14.7 GiB 
+[    2.569620] Registering SWP/SWPB emulation handler
+[    2.573434] Loading compiled-in X.509 certificates
+[    2.574816] pstore: Using crash dump compression: deflate
+[    2.584916]  mmcblk2: p1 p2 p3 p4 p5 p6 p7 p8 p9 p10 p11 p12
+[    2.593949] mmcblk2boot0: mmc2:0001 SEM16G 2.00 MiB 
+[    2.602231] mmcblk2boot1: mmc2:0001 SEM16G 2.00 MiB 
+[    2.609026] mmcblk2rpmb: mmc2:0001 SEM16G 128 KiB, chardev (245:0)
+[    2.620963] mmc0: new high speed SDIO card at address 0001
+[    2.655983] dwc2 12480000.hsotg: new address 11
+[    2.754280] [drm] Exynos DRM: using 11c00000.fimd device for DMA mapping operations
+[    2.754561] exynos-drm exynos-drm: bound 11c00000.fimd (ops fimd_component_ops)
+[    2.879275] mmc1: new high speed SDHC card at address aaaa
+[    2.884796] mmcblk1: mmc1:aaaa SL32G 28.8 GiB 
+[    2.924355]  mmcblk1: p1
+[    3.179646] Console: switching to colour frame buffer device 182x57
+[    3.202549] exynos-drm exynos-drm: [drm] fb0: exynosdrmfb frame buffer device
+[    3.211402] [drm] Initialized exynos 1.1.0 20180330 for exynos-drm on minor 0
+[    3.220697] lima 13000000.gpu: gp - mali400 version major 1 minor 1
+[    3.221094] lima 13000000.gpu: pp0 - mali400 version major 1 minor 1
+[    3.221459] lima 13000000.gpu: pp1 - mali400 version major 1 minor 1
+[    3.221798] lima 13000000.gpu: pp2 - mali400 version major 1 minor 1
+[    3.222136] lima 13000000.gpu: pp3 - mali400 version major 1 minor 1
+[    3.222389] lima 13000000.gpu: l2 cache 128K, 4-way, 64byte cache line, 64bit external bus
+[    3.225631] lima 13000000.gpu: bus rate = 24000000
+[    3.225657] lima 13000000.gpu: mod rate = 50000000
+[    3.233014] [drm] Initialized lima 1.1.0 20191231 for 13000000.gpu on minor 1
+[    3.234825] wm8994 4-001a: GPIO lookup for consumer wlf,ldo1ena
+[    3.234854] wm8994 4-001a: using device tree for GPIO lookup
+[    3.234966] of_get_named_gpiod_flags: parsed 'wlf,ldo1ena-gpios' property of node '/soc/i2c@138a0000/audio-codec@1a[0]' - status (0)
+[    3.235034] gpio_stub_drv gpiochip24: Persistence not supported for GPIO 4
+[    3.237475] wm8994 4-001a: GPIO lookup for consumer wlf,ldo2ena
+[    3.237494] wm8994 4-001a: using device tree for GPIO lookup
+[    3.237529] of_get_named_gpiod_flags: can't parse 'wlf,ldo2ena-gpios' property of node '/soc/i2c@138a0000/audio-codec@1a[0]'
+[    3.237604] of_get_named_gpiod_flags: can't parse 'wlf,ldo2ena-gpio' property of node '/soc/i2c@138a0000/audio-codec@1a[0]'
+[    3.237686] of_get_named_gpiod_flags: can't parse 'wlf,ldo2ena' property of node '/soc/i2c@138a0000/audio-codec@1a[0]'
+[    3.237739] wm8994 4-001a: using lookup tables for GPIO lookup
+[    3.237788] wm8994 4-001a: No GPIO consumer wlf,ldo2ena found
+[    3.246891] wm8994 4-001a: WM1811 revision D CUST_ID 00
+[    3.253370] wm8994 4-001a: No interrupt specified, no interrupts
+[    3.255172] gpiochip_find_base: found new base at 501
+[    3.256151] gpio_stub_drv gpiochip42: (wm8994): added GPIO chardev (254:42)
+[    3.256171] gpio_stub_drv gpiochip42: registered GPIOs 501 to 511 on wm8994
+[    3.266869] exynos-bus: new bus device registered: soc:bus-dmc (100000 KHz ~ 400000 KHz)
+[    3.271739] exynos-bus: new bus device registered: soc:bus-acp (100000 KHz ~ 267000 KHz)
+[    3.278788] exynos-bus: new bus device registered: soc:bus-c2c (100000 KHz ~ 400000 KHz)
+[    3.288530] exynos-bus: new bus device registered: soc:bus-leftbus (100000 KHz ~ 200000 KHz)
+[    3.292480] exynos-bus: new bus device registered: soc:bus-rightbus (100000 KHz ~ 200000 KHz)
+[    3.295874] exynos-bus: new bus device registered: soc:bus-display (160000 KHz ~ 200000 KHz)
+[    3.298158] exynos-bus: new bus device registered: soc:bus-fsys (100000 KHz ~ 134000 KHz)
+[    3.300408] exynos-bus: new bus device registered: soc:bus-peri ( 50000 KHz ~ 100000 KHz)
+[    3.304411] exynos-bus: new bus device registered: soc:bus-mfc (100000 KHz ~ 200000 KHz)
+[    3.306039] p4note-audio sound: GPIO lookup for consumer lineout-sel
+[    3.306058] p4note-audio sound: using device tree for GPIO lookup
+[    3.306130] of_get_named_gpiod_flags: parsed 'lineout-sel-gpios' property of node '/sound[0]' - status (0)
+[    3.306169] gpio_stub_drv gpiochip12: Persistence not supported for GPIO 2
+[    3.488685] of_get_named_gpiod_flags: parsed 'gpios' property of node '/gpio-keys/key-down[0]' - status (0)
+[    3.488797] gpio_stub_drv gpiochip34: Persistence not supported for GPIO 2
+[    3.489471] of_get_named_gpiod_flags: parsed 'gpios' property of node '/gpio-keys/key-up[0]' - status (0)
+[    3.489563] gpio_stub_drv gpiochip35: Persistence not supported for GPIO 3
+[    3.490121] of_get_named_gpiod_flags: parsed 'gpios' property of node '/gpio-keys/key-power[0]' - status (0)
+[    3.490210] gpio_stub_drv gpiochip34: Persistence not supported for GPIO 7
+[    3.491886] input: gpio-keys as /devices/platform/gpio-keys/input/input0
+[    3.557720] ALSA device list:
+[    3.557754]   #0: p4note
+[    3.563569] RAMDISK: xz image found at block 0
+[    3.563818] Input was encoded with settings that are not supported by this XZ decoder
+[    3.584923] EXT4-fs (mmcblk2p9): warning: mounting unchecked fs, running e2fsck is recommended
+[    3.589099] EXT4-fs (mmcblk2p9): mounted filesystem without journal. Quota mode: disabled.
+[    3.589343] VFS: Mounted root (ext4 filesystem) on device 179:9.
+[    3.591723] devtmpfs: mounted
+[    3.593596] Freeing unused kernel image (initmem) memory: 1024K
+[    3.646588] Run /linuxrc as init process
+[    3.646655]   with arguments:
+[    3.646703]     /linuxrc
+[    3.646747]     earlyprintk
+[    3.646791]   with environment:
+[    3.646831]     HOME=/
+[    3.646873]     TERM=linux
+[    3.646915]     sec_log=0x200000@0x46000000
+[    3.646958]     sec_tima_log=0x200000@0x46202000
+[    3.647000]     sec_avc_log=0x40000@0x46404000
+[    3.647043]     lcdtype=1
+[    3.647083]     pmic_info=1
+[    3.647123]     cordon=0
+[    3.647165]     connie=GT-N8000_OPEN_EUR_0
+[    3.762909] EXT4-fs (mmcblk2p9): re-mounted. Quota mode: disabled.
+[    4.021589] atmel_mxt_ts 3-004a: supply vdda not found, using dummy regulator
+[    4.022277] atmel_mxt_ts 3-004a: supply vdd not found, using dummy regulator
+[    4.022561] atmel_mxt_ts 3-004a: GPIO lookup for consumer reset
+[    4.022578] atmel_mxt_ts 3-004a: using device tree for GPIO lookup
+[    4.022649] of_get_named_gpiod_flags: parsed 'reset-gpios' property of node '/soc/i2c@13890000/touchscreen@4a[0]' - status (0)
+[    4.022726] gpio_stub_drv gpiochip20: Persistence not supported for GPIO 4
+[    4.022755] atmel_mxt_ts 3-004a: GPIO lookup for consumer wake
+[    4.022771] atmel_mxt_ts 3-004a: using device tree for GPIO lookup
+[    4.022803] of_get_named_gpiod_flags: can't parse 'wake-gpios' property of node '/soc/i2c@13890000/touchscreen@4a[0]'
+[    4.022878] of_get_named_gpiod_flags: can't parse 'wake-gpio' property of node '/soc/i2c@13890000/touchscreen@4a[0]'
+[    4.022946] atmel_mxt_ts 3-004a: using lookup tables for GPIO lookup
+[    4.022964] atmel_mxt_ts 3-004a: No GPIO consumer wake found
+[    4.266289] atmel_mxt_ts 3-004a: Family: 162 Variant: 0 Firmware V1.0.AA Objects: 24
+[    4.280806] atmel_mxt_ts 3-004a: Direct firmware load for maxtouch.cfg failed with error -2
+[    4.283544] atmel_mxt_ts 3-004a: Touchscreen size X4095Y4095
+[    4.285646] input: Atmel maXTouch Touchscreen as /devices/platform/soc/13890000.i2c/i2c-3/3-004a/input/input1
+[    4.356483] Bluetooth: Core ver 2.22
+[    4.356665] NET: Registered PF_BLUETOOTH protocol family
+[    4.356678] Bluetooth: HCI device and connection manager initialized
+[    4.356903] Bluetooth: HCI socket layer initialized
+[    4.356936] Bluetooth: L2CAP socket layer initialized
+[    4.357116] Bluetooth: SCO socket layer initialized
+[    4.471976] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+[    4.506954] cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+[    4.548348] brcmfmac: brcmf_fw_alloc_request: using brcm/brcmfmac4334-sdio for chip BCM4334/3
+[    4.549592] brcmfmac mmc0:0001:1: Direct firmware load for brcm/brcmfmac4334-sdio.samsung,n8010.bin failed with error -2
+[    4.698111] Bluetooth: HCI UART driver ver 2.3
+[    4.698134] Bluetooth: HCI UART protocol H4 registered
+[    4.698144] Bluetooth: HCI UART protocol BCSP registered
+[    4.698154] Bluetooth: HCI UART protocol ATH3K registered
+[    4.698600] Bluetooth: HCI UART protocol Intel registered
+[    4.699098] Bluetooth: HCI UART protocol Broadcom registered
+[    4.699111] Bluetooth: HCI UART protocol AG6XX registered
+[    4.699222] Bluetooth: HCI UART protocol Marvell registered
+[    4.699571] hci_uart_bcm serial0-0: GPIO lookup for consumer device-wakeup
+[    4.699588] hci_uart_bcm serial0-0: using device tree for GPIO lookup
+[    4.699656] of_get_named_gpiod_flags: parsed 'device-wakeup-gpios' property of node '/soc/serial@13800000/bluetooth[0]' - status (0)
+[    4.699723] gpio_stub_drv gpiochip35: Persistence not supported for GPIO 1
+[    4.699750] hci_uart_bcm serial0-0: GPIO lookup for consumer shutdown
+[    4.699764] hci_uart_bcm serial0-0: using device tree for GPIO lookup
+[    4.699813] of_get_named_gpiod_flags: parsed 'shutdown-gpios' property of node '/soc/serial@13800000/bluetooth[0]' - status (0)
+[    4.699871] gpio_stub_drv gpiochip17: Persistence not supported for GPIO 6
+[    4.699894] hci_uart_bcm serial0-0: GPIO lookup for consumer reset
+[    4.699907] hci_uart_bcm serial0-0: using device tree for GPIO lookup
+[    4.699934] of_get_named_gpiod_flags: can't parse 'reset-gpios' property of node '/soc/serial@13800000/bluetooth[0]'
+[    4.699997] of_get_named_gpiod_flags: can't parse 'reset-gpio' property of node '/soc/serial@13800000/bluetooth[0]'
+[    4.700055] hci_uart_bcm serial0-0: using lookup tables for GPIO lookup
+[    4.700070] hci_uart_bcm serial0-0: No GPIO consumer reset found
+[    4.700215] hci_uart_bcm serial0-0: supply vbat not found, using dummy regulator
+[    4.700872] hci_uart_bcm serial0-0: supply vddio not found, using dummy regulator
+[    4.701110] hci_uart_bcm serial0-0: GPIO lookup for consumer host-wakeup
+[    4.701124] hci_uart_bcm serial0-0: using device tree for GPIO lookup
+[    4.701181] of_get_named_gpiod_flags: parsed 'host-wakeup-gpios' property of node '/soc/serial@13800000/bluetooth[0]' - status (0)
+[    4.701242] gpio_stub_drv gpiochip34: Persistence not supported for GPIO 6
+[    4.921123] wake enabled for irq 144 (gpx2-5)
+[    4.921178] wake disabled for irq 144 (gpx2-5)
+[    4.926194] brcmfmac: brcmf_fw_alloc_request: using brcm/brcmfmac4334-sdio for chip BCM4334/3
+[    4.926585] brcmfmac: brcmf_c_process_clm_blob: no clm_blob available (err=-2), device may have limited channels available
+[    4.927296] brcmfmac: brcmf_c_preinit_dcmds: Firmware: BCM4334/3 wl0: Jun 26 2012 11:32:33 version 6.10 (TOB) (r335311)
+[    5.116482] Bluetooth: hci0: BCM: chip id 68
+[    5.117543] Bluetooth: hci0: BCM: features 0x0f
+[    5.119946] Bluetooth: hci0: BCM4334B0
+[    5.119971] Bluetooth: hci0: BCM4334B0 (002.001.013) build 0000
+[    5.126237] Bluetooth: hci0: BCM4334B0 'brcm/BCM.hcd' Patch
+[    5.134169] mc: Linux media interface: v0.10
+[    5.153505] videodev: Linux video capture interface: v2.00
+[    6.087136] Bluetooth: hci0: BCM4334B0 37.4MHz Class1.5 Samsung Note 10 B53-1810
+[    6.087163] Bluetooth: hci0: BCM4334B0 (002.001.013) build 2047
+[    7.084533] random: crng init done
+[    7.451674] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+[    7.451701] Bluetooth: BNEP filters: protocol multicast
+[    7.451744] Bluetooth: BNEP socket layer initialized
+[    7.479131] NET: Registered PF_ALG protocol family
+[   13.125881] IPv6: ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready
+[   31.608344] ------------[ cut here ]------------
+[   31.611091] WARNING: CPU: 0 PID: 297 at ../drivers/gpu/drm/drm_atomic_helper.c:1530 drm_atomic_helper_wait_for_vblanks.part.1+0x2ac/0x2b0
+[   31.611277] [CRTC:54:crtc-0] vblank wait timed out
+[   31.611358] Modules linked in: cmac algif_hash algif_skcipher af_alg bnep v4l2_mem2mem videobuf2_dma_contig videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc mac80211 libarc4 hci_uart btbcm btintel cpufreq_userspace cpufreq_powersave cpufreq_conservative brcmfmac cfg80211 brcmutil bluetooth ecdh_generic ecc atmel_mxt_ts
+[   31.613117] CPU: 0 PID: 297 Comm: vblank Not tainted 5.18.0-rc6-00005-g9a77f8660959-dirty #10
+[   31.613207] Hardware name: Samsung Exynos (Flattened Device Tree)
+[   31.613275]  unwind_backtrace from show_stack+0x10/0x14
+[   31.613402]  show_stack from dump_stack_lvl+0x58/0x70
+[   31.613508]  dump_stack_lvl from __warn+0x230/0x234
+[   31.613603]  __warn from warn_slowpath_fmt+0x70/0xb4
+[   31.613692]  warn_slowpath_fmt from drm_atomic_helper_wait_for_vblanks.part.1+0x2ac/0x2b0
+[   31.613799]  drm_atomic_helper_wait_for_vblanks.part.1 from drm_atomic_helper_commit_tail_rpm+0x5c/0x6c
+[   31.613903]  drm_atomic_helper_commit_tail_rpm from commit_tail+0xa4/0x198
+[   31.613997]  commit_tail from drm_atomic_helper_commit+0x164/0x18c
+[   31.614092]  drm_atomic_helper_commit from drm_atomic_helper_update_plane+0x100/0x124
+[   31.614192]  drm_atomic_helper_update_plane from drm_mode_setplane+0x158/0x334
+[   31.614314]  drm_mode_setplane from drm_ioctl_kernel+0xb8/0x154
+[   31.614434]  drm_ioctl_kernel from drm_ioctl+0x2bc/0x3a8
+[   31.614533]  drm_ioctl from sys_ioctl+0x2e0/0xc8c
+[   31.614643]  sys_ioctl from ret_fast_syscall+0x0/0x1c
+[   31.614736] Exception stack(0xefb71fa8 to 0xefb71ff0)
+[   31.614818] 1fa0:                   00452f1c beeb3bd0 00000003 c03064b7 beeb3bd0 00000000
+[   31.614899] 1fc0: 00452f1c beeb3bd0 c03064b7 00000036 00000000 00000000 00452f1c beeb3cac
+[   31.614966] 1fe0: b6f85e68 beeb3b88 b6f6df90 b6ee8fa4
+[   31.615562] irq event stamp: 21993
+[   31.615649] hardirqs last  enabled at (21999): [<c019db1c>] __up_console_sem+0x50/0x60
+[   31.615794] hardirqs last disabled at (22004): [<c019db08>] __up_console_sem+0x3c/0x60
+[   31.615904] softirqs last  enabled at (21992): [<c01016d4>] __do_softirq+0x39c/0x5e8
+[   31.616012] softirqs last disabled at (21987): [<c0130a08>] irq_exit+0x1c4/0x200
+[   31.616129] ---[ end trace 0000000000000000 ]---
+[   42.073968] exynos-drm exynos-drm: [drm] *ERROR* flip_done timed out
+[   42.079706] exynos-drm exynos-drm: [drm] *ERROR* [CRTC:54:crtc-0] commit wait timed out
+[   42.195758] ------------[ cut here ]------------
+[   42.195852] WARNING: CPU: 0 PID: 297 at ../drivers/gpu/drm/drm_atomic_helper.c:1530 drm_atomic_helper_wait_for_vblanks.part.1+0x2ac/0x2b0
+[   42.196038] [CRTC:54:crtc-0] vblank wait timed out
+[   42.196120] Modules linked in: cmac algif_hash algif_skcipher af_alg bnep v4l2_mem2mem videobuf2_dma_contig videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc mac80211 libarc4 hci_uart btbcm btintel cpufreq_userspace cpufreq_powersave cpufreq_conservative brcmfmac cfg80211 brcmutil bluetooth ecdh_generic ecc atmel_mxt_ts
+[   42.197876] CPU: 0 PID: 297 Comm: vblank Tainted: G        W         5.18.0-rc6-00005-g9a77f8660959-dirty #10
+[   42.197964] Hardware name: Samsung Exynos (Flattened Device Tree)
+[   42.198040]  unwind_backtrace from show_stack+0x10/0x14
+[   42.198170]  show_stack from dump_stack_lvl+0x58/0x70
+[   42.198279]  dump_stack_lvl from __warn+0x230/0x234
+[   42.198380]  __warn from warn_slowpath_fmt+0x70/0xb4
+[   42.198470]  warn_slowpath_fmt from drm_atomic_helper_wait_for_vblanks.part.1+0x2ac/0x2b0
+[   42.198577]  drm_atomic_helper_wait_for_vblanks.part.1 from drm_atomic_helper_commit_tail_rpm+0x5c/0x6c
+[   42.198683]  drm_atomic_helper_commit_tail_rpm from commit_tail+0xa4/0x198
+[   42.198781]  commit_tail from drm_atomic_helper_commit+0x164/0x18c
+[   42.198876]  drm_atomic_helper_commit from drm_atomic_helper_update_plane+0x100/0x124
+[   42.198978]  drm_atomic_helper_update_plane from drm_mode_setplane+0x158/0x334
+[   42.199103]  drm_mode_setplane from drm_ioctl_kernel+0xb8/0x154
+[   42.199227]  drm_ioctl_kernel from drm_ioctl+0x2bc/0x3a8
+[   42.199324]  drm_ioctl from sys_ioctl+0x2e0/0xc8c
+[   42.199440]  sys_ioctl from ret_fast_syscall+0x0/0x1c
+[   42.199532] Exception stack(0xefb71fa8 to 0xefb71ff0)
+[   42.199614] 1fa0:                   00452f1c beeb3bd0 00000003 c03064b7 beeb3bd0 00000000
+[   42.199695] 1fc0: 00452f1c beeb3bd0 c03064b7 00000036 00000000 00000000 00452f1c beeb3cac
+[   42.199762] 1fe0: b6f85e68 beeb3b88 b6f6df90 b6ee8fa4
+[   42.199827] irq event stamp: 22375
+[   42.199899] hardirqs last  enabled at (22381): [<c019db1c>] __up_console_sem+0x50/0x60
+[   42.200038] hardirqs last disabled at (22386): [<c019db08>] __up_console_sem+0x3c/0x60
+[   42.200145] softirqs last  enabled at (22132): [<c01016d4>] __do_softirq+0x39c/0x5e8
+[   42.200250] softirqs last disabled at (22127): [<c0130a08>] irq_exit+0x1c4/0x200
+[   42.200368] ---[ end trace 0000000000000000 ]---
+[   52.314019] exynos-drm exynos-drm: [drm] *ERROR* flip_done timed out
+[   52.319417] exynos-drm exynos-drm: [drm] *ERROR* [CRTC:54:crtc-0] commit wait timed out
+[   62.554304] exynos-drm exynos-drm: [drm] *ERROR* flip_done timed out
+[   62.559994] exynos-drm exynos-drm: [drm] *ERROR* [PLANE:31:plane-0] commit wait timed out
+[   62.674080] ------------[ cut here ]------------
+[   62.674130] WARNING: CPU: 2 PID: 297 at ../drivers/gpu/drm/drm_atomic_helper.c:1530 drm_atomic_helper_wait_for_vblanks.part.1+0x2ac/0x2b0
+[   62.674237] [CRTC:54:crtc-0] vblank wait timed out
+[   62.674280] Modules linked in: cmac algif_hash algif_skcipher af_alg bnep v4l2_mem2mem videobuf2_dma_contig videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc mac80211 libarc4 hci_uart btbcm btintel cpufreq_userspace cpufreq_powersave cpufreq_conservative brcmfmac cfg80211 brcmutil bluetooth ecdh_generic ecc atmel_mxt_ts
+[   62.675187] CPU: 2 PID: 297 Comm: vblank Tainted: G        W         5.18.0-rc6-00005-g9a77f8660959-dirty #10
+[   62.675232] Hardware name: Samsung Exynos (Flattened Device Tree)
+[   62.675281]  unwind_backtrace from show_stack+0x10/0x14
+[   62.675353]  show_stack from dump_stack_lvl+0x58/0x70
+[   62.675414]  dump_stack_lvl from __warn+0x230/0x234
+[   62.675467]  __warn from warn_slowpath_fmt+0x70/0xb4
+[   62.675513]  warn_slowpath_fmt from drm_atomic_helper_wait_for_vblanks.part.1+0x2ac/0x2b0
+[   62.675570]  drm_atomic_helper_wait_for_vblanks.part.1 from drm_atomic_helper_commit_tail_rpm+0x5c/0x6c
+[   62.675625]  drm_atomic_helper_commit_tail_rpm from commit_tail+0xa4/0x198
+[   62.675673]  commit_tail from drm_atomic_helper_commit+0x164/0x18c
+[   62.675721]  drm_atomic_helper_commit from drm_atomic_helper_update_plane+0x100/0x124
+[   62.675771]  drm_atomic_helper_update_plane from drm_mode_setplane+0x158/0x334
+[   62.675841]  drm_mode_setplane from drm_ioctl_kernel+0xb8/0x154
+[   62.675910]  drm_ioctl_kernel from drm_ioctl+0x2bc/0x3a8
+[   62.675960]  drm_ioctl from sys_ioctl+0x2e0/0xc8c
+[   62.676025]  sys_ioctl from ret_fast_syscall+0x0/0x1c
+[   62.676073] Exception stack(0xefb71fa8 to 0xefb71ff0)
+[   62.676118] 1fa0:                   00452f1c beeb3bd0 00000003 c03064b7 beeb3bd0 00000000
+[   62.676159] 1fc0: 00452f1c beeb3bd0 c03064b7 00000036 00000000 00000000 00452f1c beeb3cac
+[   62.676193] 1fe0: b6f85e68 beeb3b88 b6f6df90 b6ee8fa4
+[   62.676227] irq event stamp: 22753
+[   62.676264] hardirqs last  enabled at (22759): [<c019db1c>] __up_console_sem+0x50/0x60
+[   62.676337] hardirqs last disabled at (22764): [<c019db08>] __up_console_sem+0x3c/0x60
+[   62.676391] softirqs last  enabled at (22522): [<c01016d4>] __do_softirq+0x39c/0x5e8
+[   62.676445] softirqs last disabled at (22517): [<c0130a08>] irq_exit+0x1c4/0x200
+[   62.676507] ---[ end trace 0000000000000000 ]---

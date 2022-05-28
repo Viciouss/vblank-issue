@@ -1,0 +1,3 @@
+# What
+
+This repo contains some code to reproduce the vblank issue on Exynos devices using FIMD driver, as well as dmesg output.

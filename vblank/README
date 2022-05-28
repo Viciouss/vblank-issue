@@ -1,0 +1,16 @@
+# Usage
+
+## Preparations
+
+Provide your cross file (or adjust the example in armv7.txt):
+
+* toolchain
+* sys_root
+* pkg_config_libdir
+
+Export device ip to DEVICE_IP, if user is not root, adjust the user as well (and make sure the user has permission to access /dev/dri/card0).
+
+## Execute
+
+* meson builddir --cross-file armv7.txt
+* ./vblank.sh
