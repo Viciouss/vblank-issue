@@ -192,10 +192,10 @@ dumb_fb_init(struct dumb_fb *fb, int drm_fd, uint32_t format, uint32_t width,
     return true;
 }
 
-static uint32_t get_plane_id(int drm_fd, int crtc, int type, int count)
+static uint32_t get_plane_id(int drm_fd, int crtc, int type)
 {
     drmModePlaneResPtr plane_resources;
-    uint32_t i, j, ret = -1, plane_types_found = 0;
+    uint32_t i, j, ret = -1;
     int found_plane = 0;
 
     plane_resources = drmModeGetPlaneResources(drm_fd);
@@ -226,11 +226,10 @@ static uint32_t get_plane_id(int drm_fd, int crtc, int type, int count)
                     drmModeGetProperty(drm_fd, props->props[j]);
 
                 if ((strcmp(p->name, "type") == 0) &&
-                    (props->prop_values[j] == type) &&
-                    ++plane_types_found == count)
+                    (props->prop_values[j] == type))
                 {
 
-                    printf("Found plane %d of type %d\n", count, type);
+                    printf("Found plane of type %d\n", type);
                     ret = id;
                     found_plane = 1;
                 }
@@ -253,84 +252,41 @@ int main()
 {
     struct drm_wrap *wrap = open_drm_wrap("/dev/dri/card0");
 
-    int err = 0, move_size = 16, first_plane_width = 1; // initiating the first plane with value 2 is fine, no issues
-    struct dumb_fb fb = {0};
-    struct dumb_fb fb2 = {0};
+    // on width = 1, every multiple of 8 in height will cause the issue
+    int err = 0, buffer_width = 1, buffer_height = 8;
+    struct dumb_fb buffer = {0};
     uint32_t format = DRM_FORMAT_ARGB8888;
 
-    uint16_t totalWidth = wrap->crtc->mode.hdisplay;
-    uint16_t totalHeight = wrap->crtc->mode.vdisplay;
-
-    // allocate some dumb buffers
-    if (!dumb_fb_init(&fb, wrap->drm_fd, format, totalWidth, totalHeight))
+    if (!dumb_fb_init(&buffer, wrap->drm_fd, format, buffer_width, buffer_height))
     {
-        printf("failed to create framebuffer #1\n");
-        goto cleanup;
-    }
-
-    printf("Created FB %d with size %dx%d\n", fb.id, totalWidth, totalHeight);
-    dumb_fb_fill(&fb, wrap->drm_fd, 0xFF00FF00); // green
-
-    if (!dumb_fb_init(&fb2, wrap->drm_fd, format, totalWidth, totalHeight))
-    {
-        printf("failed to create framebuffer #2\n");
+        printf("failed to create framebuffer\n");
         goto cleanup;
     }
     
-    printf("Created FB %d with size %dx%d\n", fb2.id, totalWidth, totalHeight);
-    dumb_fb_fill(&fb2, wrap->drm_fd, 0xFF0000FF); // blue
+    printf("Created FB %d with size %dx%d\n", buffer.id, buffer_width, buffer_height);
+    dumb_fb_fill(&buffer, wrap->drm_fd, 0xFF00FF00); // blue
 
-    // planes
-    uint32_t plane_id = get_plane_id(wrap->drm_fd, wrap->crtc_index, DRM_PLANE_TYPE_PRIMARY, 1);
+    // plane type doesn't matter
+    uint32_t plane_id = get_plane_id(wrap->drm_fd, wrap->crtc_index, DRM_PLANE_TYPE_PRIMARY);
     if (plane_id < 0) {
-        printf("failed to create plane #1\n");
-        goto cleanup;
-    }
-
-    uint32_t plane_id2 = get_plane_id(wrap->drm_fd, wrap->crtc_index, DRM_PLANE_TYPE_OVERLAY, 1);
-    if (plane_id < 0) {
-        printf("failed to create plane #2\n");
+        printf("failed to create plane\n");
         goto cleanup;
     }
 
     printf("\n");
 
-    // try to update planes, creating a (rather slow) animation from one plane to the other
-    // on screen this should animate the blue 
-    while (!usleep(50000))
+    print_log("Updating first plane to width of 1");
+    err = drmModeSetPlane(wrap->drm_fd, plane_id,
+                            wrap->crtc->crtc_id, buffer.id, 0,
+                            8, 8, buffer_width, buffer_height,
+                            0 << 16, 0 << 16, buffer_width << 16, buffer_height << 16); // src
+    if (err)
     {
-        
-        int split = totalWidth - first_plane_width;
-        print_log("Updating first plane to width of %d", first_plane_width);
-        err = drmModeSetPlane(wrap->drm_fd, plane_id2,
-                              wrap->crtc->crtc_id, fb2.id, 0,
-                              0, 0, first_plane_width, totalHeight,  // crtc
-                              split << 16, 0 << 16, first_plane_width << 16, totalHeight << 16); // src
-        if (err)
-        {
-            print_log("error setting plane: %d", err);
-            goto cleanup;
-        }
-
-        print_log("Updating second plane to width of %d", split);
-        err = drmModeSetPlane(wrap->drm_fd, plane_id,
-                              wrap->crtc->crtc_id, fb.id, 0,
-                              (first_plane_width+1), 0, (split-1), totalHeight, // crtc
-                              0 << 16, 0 << 16, (split-1) << 16, totalHeight << 16); // src
-        if (err)
-        {
-            print_log("error setting plane: %d", err);
-            goto cleanup;
-        }
-
-        print_log("Update done.\n");
-
-        first_plane_width = first_plane_width + move_size;
-        if (first_plane_width > totalWidth)
-        {
-            break;
-        }
+        print_log("error setting plane: %d", err);
+        goto cleanup;
     }
+
+    print_log("Update done.\n");
 
     int c = getchar();
 
